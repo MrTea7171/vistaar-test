@@ -1,5 +1,5 @@
 import { debounce } from 'lodash'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 
 const useTableHook = ({
     fetchData,
@@ -17,14 +17,23 @@ const useTableHook = ({
     const [currentPage, setCurrentPage] = useState(1)
     const [searchQuery, setSearchQuery] = useState('')
 
-    useEffect(() => {
-        const setTableData = async () => {
+    const setTableData = useCallback(
+        async (currentPage, searchQuery) => {
             const tableData = await fetchData(currentPage, searchQuery)
             setRowData(tableData.rows)
             setTotalPages(tableData.totalPages)
-        }
-        setTableData()
-    }, [currentPage, searchQuery, fetchData])
+        },
+        [fetchData]
+    )
+
+    useEffect(() => {
+        setTableData(currentPage, searchQuery)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentPage])
+
+    useEffect(() => {
+        setTableData(1, searchQuery)
+    }, [searchQuery, setTableData])
 
     const handlePageChange = (newPage: number) => {
         setCurrentPage(newPage)
