@@ -1,0 +1,17 @@
+footer {
+    background-color: #333; /* Background color */
+    color: #fff; /* Text color */
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
+}
+
+/* Style for the copyright notice */
+.copyright {
+    font-size: 14px;
+}
+
+/* Style for the "Maintained by" text */
+.maintained {
+    font-size: 12px;
+}

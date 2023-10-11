@@ -1,0 +1,23 @@
+.page--heading {
+    margin-top: 1vw;
+    text-align: center;
+}
+
+.page--table {
+    width: 100%;
+    padding: 1vw 2vw;
+}
+
+.pagination {
+    display: flex;
+    justify-content: end;
+    padding: 0px 2vw;
+    gap: 10px;
+    margin: 10px 0px;
+}
+
+.search-box {
+    padding: 0.5vw;
+    margin: 10px 0px;
+    width: 15%;
+}
